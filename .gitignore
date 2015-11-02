@@ -3,8 +3,12 @@
 places
 .recentf
 ido.last
+.recentf~
+ido.last~
 cider-history
 projectile-bookmarks.eld
 projectile.cache
 auto-save-list
 backups
+elpa/
+server/
