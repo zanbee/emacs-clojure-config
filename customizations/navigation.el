@@ -59,3 +59,7 @@
 
 ;; projectile everywhere!
 (projectile-global-mode)
+
+;; show tree folder
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)

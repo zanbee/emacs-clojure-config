@@ -21,6 +21,8 @@
 ;; This also sets the load path.
 (package-initialize)
 
+(add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
+
 ;; Download the ELPA archive description if needed.
 ;; This informs Emacs about the latest versions of all packages, and
 ;; makes them available for download.
@@ -70,6 +72,18 @@
 
     ;; auto complete
     company
+
+    ;; browse like explorer
+    neotree
+
+    ;; C ack for search 
+    ag
+
+    ;; minor clojure mode for clojure script
+    inf-clojure
+
+    ;; emoji auto-completion
+    company-emoji
 
     ;; git integration
     magit))
@@ -138,4 +152,9 @@
 
 ;; Langauage-specific
 (load "setup-clojure.el")
-(load "setup-js.el")
+
+;; hot-reload for markdown
+(load "livedown.el")
+
+;; config markdown
+(load "markdown.el")
