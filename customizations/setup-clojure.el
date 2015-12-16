@@ -89,3 +89,27 @@
      (define-key clojure-mode-map (kbd "C-M-r") 'cider-refresh)
      (define-key clojure-mode-map (kbd "C-c u") 'cider-user-ns)
      (define-key cider-mode-map (kbd "C-c u") 'cider-user-ns)))
+
+
+;; unit test
+(require 'midje-mode)
+(require 'clojure-jump-to-file)
+;; (add-hook 'clojure-mode-hook 'midje-mode)
+
+;; (defun figwheel-repl ()
+;;   (interactive)
+;;   (run-clojure "lein figwheel"))
+
+;; (add-hook 'clojure-mode-hook #'inf-clojure-minor-mode)
+
+(defun cider-figwheel-repl ()
+  (interactive)
+  (save-some-buffers)
+  (with-current-buffer (cider-current-repl-buffer)
+    (goto-char (point-max))
+    (insert "(require 'figwheel-sidecar.repl-api)
+             (figwheel-sidecar.repl-api/start-figwheel!) ; idempotent
+             (figwheel-sidecar.repl-api/cljs-repl)")
+    (cider-repl-return)))
+
+(global-set-key (kbd "C-c C-f") 'cider-figwheel-repl)

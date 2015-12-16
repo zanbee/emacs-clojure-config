@@ -205,3 +205,5 @@
       (insert "* ")))
     (let ((o (sp--get-active-overlay)))
       (indent-region (overlay-start o) (overlay-end o)))))
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace)

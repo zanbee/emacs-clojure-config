@@ -80,10 +80,20 @@
     ag
 
     ;; minor clojure mode for clojure script
-    inf-clojure
+    ;; inf-clojure
 
     ;; emoji auto-completion
     company-emoji
+
+    ;; clojure UT
+    midje-mode
+
+    ;; js mode
+    nodejs-repl
+    tern
+    company-tern
+    js3-mode
+    scss-mode
 
     ;; git integration
     magit))
@@ -116,7 +126,7 @@
 ;; Adding this code will make Emacs enter yaml mode whenever you open
 ;; a .yml file
 (add-to-list 'load-path "~/.emacs.d/vendor")
-
+(require 'handlebars-mode)
 
 ;;;;
 ;; Customization
@@ -158,3 +168,4 @@
 
 ;; config markdown
 (load "markdown.el")
+
