@@ -4,12 +4,15 @@
 
 ;; Define package repositories
 (require 'package)
+;; (add-to-list 'package-archives
+;;              '("marmalade" . "http://marmalade-repo.org/packages/") t)
+;; (add-to-list 'package-archives
+;;              '("tromey" . "http://tromey.com/elpa/") t)
+;; (add-to-list 'package-archives
+;;              '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
 (add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
-(add-to-list 'package-archives
-             '("tromey" . "http://tromey.com/elpa/") t)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+             '("melpa" . "https://melpa.org/packages/"))
 
 ;; (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
 ;;                          ("marmalade" . "http://marmalade-repo.org/packages/")
@@ -20,8 +23,6 @@
 ;; packages are loaded before you start trying to modify them.
 ;; This also sets the load path.
 (package-initialize)
-
-(add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
 
 ;; Download the ELPA archive description if needed.
 ;; This informs Emacs about the latest versions of all packages, and
@@ -76,7 +77,7 @@
     ;; browse like explorer
     neotree
 
-    ;; C ack for search 
+    ;; C ack for search
     ag
 
     ;; minor clojure mode for clojure script
@@ -122,7 +123,7 @@
 ;;
 ;; (require 'yaml-mode)
 ;; (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-;; 
+;;
 ;; Adding this code will make Emacs enter yaml mode whenever you open
 ;; a .yml file
 (add-to-list 'load-path "~/.emacs.d/vendor")
@@ -132,7 +133,7 @@
 ;; Customization
 ;;;;
 
-;; global paren mode 
+;; global paren mode
 (smartparens-global-mode t)
 
 ;; Add a directory to our load path so that when you `load` things
@@ -168,4 +169,3 @@
 
 ;; config markdown
 (load "markdown.el")
-
