@@ -97,7 +97,15 @@
     scss-mode
 
     ;; git integration
-    magit))
+    magit
+
+    ;; ruby on rails
+    ;; rinari
+    projectile-rails
+    inf-ruby
+    robe
+
+    ))
 
 ;; On OS X, an Emacs instance started from the graphical user
 ;; interface will have a different environment than a shell in a
@@ -107,8 +115,10 @@
 ;; This library works around this problem by copying important
 ;; environment variables from the user's shell.
 ;; https://github.com/purcell/exec-path-from-shell
-(if (eq system-type 'darwin)
-    (add-to-list 'my-packages 'exec-path-from-shell))
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize)
+  (exec-path-from-shell-copy-env "CURRENCY_LAYER_API_KEY") ;; for ulab's hotspot
+  )
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -169,3 +179,13 @@
 
 ;; config markdown
 (load "markdown.el")
+
+;;ruby on rails
+(projectile-rails-global-mode)
+(require 'slim-mode) ;; from vendor
+;; (eval-after-load 'company
+;;  '(push 'company-robe company-backends))
+
+(require 'rbenv) ;; from vendor
+(global-rbenv-mode)
+(add-hook 'ruby-mode-hook 'robe-mode)
