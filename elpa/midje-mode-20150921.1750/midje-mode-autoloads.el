@@ -1,9 +1,9 @@
 ;;; midje-mode-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
-(add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
+(add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "midje-mode" "midje-mode.el" (22084 43799 0
+;;;### (autoloads nil "midje-mode" "midje-mode.el" (22749 56483 0
 ;;;;;;  0))
 ;;; Generated autoloads from midje-mode.el
 
@@ -22,7 +22,7 @@ Enable midje-mode if the current buffer contains a \"midje.\" string." (let ((re
 ;;;***
 
 ;;;### (autoloads nil nil ("clojure-jump-to-file.el" "midje-mode-pkg.el"
-;;;;;;  "midje-mode-praise.el") (22084 43800 107601 0))
+;;;;;;  "midje-mode-praise.el") (22749 56483 0 0))
 
 ;;;***
 
