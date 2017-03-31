@@ -97,12 +97,21 @@
     js3-mode
     scss-mode
 
+    ;; python
     anaconda-mode
     company-anaconda
     pyenv-mode
 
     ;; git integration
-    magit))
+    magit
+
+    ;; ruby on rails
+    ;; rinari
+    projectile-rails
+    inf-ruby
+    robe
+
+    ))
 
 ;; On OS X, an Emacs instance started from the graphical user
 ;; interface will have a different environment than a shell in a
@@ -112,8 +121,10 @@
 ;; This library works around this problem by copying important
 ;; environment variables from the user's shell.
 ;; https://github.com/purcell/exec-path-from-shell
-(if (eq system-type 'darwin)
-    (add-to-list 'my-packages 'exec-path-from-shell))
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize)
+  (exec-path-from-shell-copy-env "CURRENCY_LAYER_API_KEY") ;; for ulab's hotspot
+  )
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -177,37 +188,9 @@
 
 ;; config markdown
 (load "markdown.el")
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(blink-cursor-mode nil)
- '(custom-safe-themes
-   (quote
-    ("cf08ae4c26cacce2eebff39d129ea0a21c9d7bf70ea9b945588c1c66392578d1" "9e54a6ac0051987b4296e9276eecc5dfb67fdcd620191ee553f40a9b6d943e78" "7f1263c969f04a8e58f9441f4ba4d7fb1302243355cb9faecb55aec878a06ee9" "5ee12d8250b0952deefc88814cf0672327d7ee70b16344372db9460e9a0e3ffc" default)))
- '(livedown:autostart nil)
- '(livedown:open t)
- '(livedown:port 1337)
- '(menu-bar-mode nil)
- '(package-selected-packages
-   (quote
-    (company-anaconda yaml-mode smex smartparens scss-mode rainbow-delimiters projectile nodejs-repl neotree midje-mode markdown-mode magit js3-mode inf-clojure ido-ubiquitous haml-mode exec-path-from-shell company-tern company-emoji clojure-mode-extra-font-locking anaconda-mode ag)))
- '(safe-local-variable-values (quote ((eval pyenv-mode-set "tornado_env"))))
- '(show-paren-mode t)
- '(tool-bar-mode nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(sp-pair-overlay-face ((t (:inherit highlight :foreground "dark red")))))
-
-;; JAVA
-;; (add-to-list 'load-path "~/.emacs.d/vendor/jdee-2.4.1/lisp")
-;; (load "jde")
 
 
+;; python
 (pyenv-mode)
 (add-hook 'python-mode-hook 'anaconda-mode)
 (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
@@ -222,3 +205,13 @@
       (pyenv-mode-unset))))
 
 (add-hook 'projectile-switch-project-hook 'projectile-pyenv-mode-set)
+
+;;ruby on rails
+(projectile-rails-global-mode)
+(require 'slim-mode) ;; from vendor
+;; (eval-after-load 'company
+;;  '(push 'company-robe company-backends))
+
+(require 'rbenv) ;; from vendor
+(global-rbenv-mode)
+(add-hook 'ruby-mode-hook 'robe-mode)
