@@ -189,26 +189,31 @@
 ;; config markdown
 (load "markdown.el")
 
+(global-set-key (kbd "C-x g") 'magit-status)
 
+
+(add-to-list 'load-path "~/.emacs.d/vendor")
+(load "rbenv.el")
 ;; python
-(pyenv-mode)
-(add-hook 'python-mode-hook 'anaconda-mode)
-(add-hook 'python-mode-hook 'anaconda-eldoc-mode)
-(eval-after-load "company"
-  '(add-to-list 'company-backends 'company-anaconda))
-(add-hook 'python-mode-hook 'company-mode)
-(defun projectile-pyenv-mode-set ()
-  "Set pyenv version matching project name."
-  (let ((project (projectile-project-name)))
-    (if (member project (pyenv-mode-versions))
-        (pyenv-mode-set project)
-      (pyenv-mode-unset))))
+;; (pyenv-mode)
+;; (add-hook 'python-mode-hook 'anaconda-mode)
+;; (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
+;; (eval-after-load "company"
+;;   '(add-to-list 'company-backends 'company-anaconda))
+;; (add-hook 'python-mode-hook 'company-mode)
+;; (defun projectile-pyenv-mode-set ()
+;;   "Set pyenv version matching project name."
+;;   (let ((project (projectile-project-name)))
+;;     (if (member project (pyenv-mode-versions))
+;;         (pyenv-mode-set project)
+;;       (pyenv-mode-unset))))
+;; (add-hook 'projectile-switch-project-hook 'projectile-pyenv-mode-set)
 
-(add-hook 'projectile-switch-project-hook 'projectile-pyenv-mode-set)
+
 
 ;;ruby on rails
 (projectile-rails-global-mode)
-(require 'slim-mode) ;; from vendor
+;; (require 'slim-mode) ;; from vendor
 ;; (eval-after-load 'company
 ;;  '(push 'company-robe company-backends))
 
