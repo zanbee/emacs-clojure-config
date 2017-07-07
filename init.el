@@ -217,10 +217,10 @@
 ;; (eval-after-load 'company
 ;;  '(push 'company-robe company-backends))
 
-;; (require 'rbenv) ;; from vendor
-;; (global-rbenv-mode)
-;; (add-hook 'ruby-mode-hook 'robe-mode)
+(require 'rbenv) ;; from vendor
+(global-rbenv-mode)
+(add-hook 'ruby-mode-hook 'robe-mode)
 
 (global-set-key (kbd "C-x g") 'magit-status)
-(global-set-key (kbd "C-x C-/") 'comment-region)
-(global-set-key (kbd "C-x M-/") 'uncomment-region)
+(global-set-key (kbd "C-x C-;") 'comment-region)
+(global-set-key (kbd "C-x M-;") 'uncomment-region)

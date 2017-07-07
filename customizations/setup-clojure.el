@@ -37,7 +37,10 @@
   (DELETE 2)
   (HEAD 2)
   (ANY 2)
-  (context 2))
+  (context 2)
+  (select 2)
+  (insert 2)
+  (where 2))
 
 ;;;;
 ;; Cider
