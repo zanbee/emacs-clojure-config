@@ -27,6 +27,8 @@
 ;;             (define-clojure-indent (fact 1))
 ;;             (define-clojure-indent (facts 1))))
 
+(setq clojure-indent-style :always-indent)
+
 (define-clojure-indent
   (-> 1)
   (->> 1)
@@ -38,9 +40,11 @@
   (HEAD 2)
   (ANY 2)
   (context 2)
-  (select 2)
-  (insert 2)
-  (where 2))
+  (select 1)
+  (insert 1)
+  (where 1)
+  (update 1)
+  (delete 1))
 
 ;;;;
 ;; Cider

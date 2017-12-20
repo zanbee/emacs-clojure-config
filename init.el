@@ -8,11 +8,12 @@
 ;;              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 ;; (add-to-list 'package-archives
 ;;              '("tromey" . "http://tromey.com/elpa/") t)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+;;(add-to-list 'package-archives
+;;             '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
-;; (add-to-list 'package-archives
-;;              '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/"))
+
 
 ;;(add-to-list 'package-archives
 ;;             '("melpa-stable" . "http://stable.melpa.org/packages/") t)
@@ -88,7 +89,7 @@
     company-emoji
 
     ;; clojure UT
-    midje-mode
+    ;;midje-mode
 
     ;; js mode
     nodejs-repl
@@ -122,9 +123,7 @@
 ;; environment variables from the user's shell.
 ;; https://github.com/purcell/exec-path-from-shell
 (when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize)
-  (exec-path-from-shell-copy-env "CURRENCY_LAYER_API_KEY") ;; for ulab's hotspot
-  )
+  (exec-path-from-shell-initialize))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -188,6 +187,9 @@
 
 ;; config markdown
 (load "markdown.el")
+
+
+(load "move-line.el")
 
 (global-set-key (kbd "C-x g") 'magit-status)
 
